@@ -4,9 +4,37 @@
 #include "pch.h"
 #include <iostream>
 
+using namespace std;
+
+char square[10] = {'o','1','2','3','4','5','6','7','8','9'};
+
+void board()
+{
+	//clears the sceen first
+	system("cls");
+
+	//Greet the players
+	cout << "Welcome to Tic Tac Toe" << endl;
+	cout << "Player 1 will be X" << endl;
+	cout << "Player 2 will be O" << endl;
+	cout << endl;
+	
+	//make the grid
+	cout << "[" << square[1] << "]" << "[" << square[2] << "]" << "[" << square[3] << "]" << endl;
+	cout << "[" << square[4] << "]" << "[" << square[5] << "]" << "[" << square[6] << "]" << endl;
+	cout << "[" << square[7] << "]" << "[" << square[8] << "]" << "[" << square[9] << "]" << endl;
+	cout << endl;
+}
+
+int checkWin()
+{
+	return 1;
+}
+
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	board();
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

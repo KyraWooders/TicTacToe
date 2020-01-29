@@ -6,8 +6,10 @@
 
 using namespace std;
 
+//holds the game's grid space
 char square[10] = {'o','1','2','3','4','5','6','7','8','9'};
 
+//makes the game board and welcomes the players
 void board()
 {
 	//clears the sceen first
@@ -28,6 +30,7 @@ void board()
 
 }
 
+//checks all the ways to win and draw the game
 int checkWin()
 {
 	//if one of the players match the first row
@@ -62,33 +65,42 @@ int checkWin()
 	else if (square[3] == square[5] && square[5] == square[7])
 		return 1;
 
-	//if the players CAT the game
+	//if the players draw the game
 	else if (square[1] != '1' && square[2] != '2' && square[3] != '3'
-		&& square[4] != '4' && square[5] != '5' && square[6] != '6'
-		&& square[7] != '7' && square[8] != '8' && square[9] != '9')
+		  && square[4] != '4' && square[5] != '5' && square[6] != '6'
+		  && square[7] != '7' && square[8] != '8' && square[9] != '9')
 		return -1;
-
-	//if game is over
+	
+	//if game is running
 	else
+	{
 		return 0;
+	}
 }
 
+//hlods the main game
 int main()
 {
 	char mark;
 	int player = 1,i,choice;
 
-	while (checkWin() == 2)
+	//draws the borad and welcome message
+	board();
+
+	//while the game is running
+	while (checkWin() == 0)
 	{
-		//draws the borad and welcome message
-		board();
+		//only can switch from two players
 		player = (player % 2) ? 1 : 2;
 
+		//shows who's turn is it
 		cout << "Player " << player << ", enter a number: ";
 		cin >> choice;
 
+		//switch from two players' markings
 		mark = (player == 1) ? 'X' : 'O';
 
+		//mark the player's choice of space
 		if (choice == 1 && square[1] == '1')
 			square[1] = mark;
 
@@ -115,6 +127,8 @@ int main()
 
 		else if (choice == 9 && square[9] == '9')
 			square[9] = mark;
+
+		//if the spot is taken by the other player
 		else
 		{
 			cout << "Invaild Move";
@@ -123,17 +137,23 @@ int main()
 			cin.get();
 		}
 
+		//check if any player won
 		i = checkWin();
 
-		player++;
+		//draws the borad again
+		board();
 
+		//if one of the players wins
 		if (i == 1)
-			cout << "Player " << --player << " wins!";
+			cout << "Player " << player << " wins!";
 
+		//if there are no other moves left
+		else if (i == -1)
+			cout << "Draw";
+		
+		//swich player
+		player++;
 	}
-	
-
-
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

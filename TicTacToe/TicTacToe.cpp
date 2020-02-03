@@ -145,12 +145,20 @@ int main()
 
 		//if one of the players wins
 		if (i == 1)
+		{
 			cout << "Player " << player << " wins!";
+			cin.ignore();
+			cin.get();
+		}
 
 		//if there are no other moves left
 		else if (i == -1)
+		{
 			cout << "Draw";
-		
+			cin.ignore();
+			cin.get();
+		}
+			
 		//swich player
 		player++;
 	}

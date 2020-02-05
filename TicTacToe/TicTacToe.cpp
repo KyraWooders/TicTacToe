@@ -78,7 +78,7 @@ int checkWin()
 	}
 }
 
-//hlods the main game
+//holds the main game
 int main()
 {
 	char mark;
